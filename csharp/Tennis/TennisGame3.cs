@@ -2,6 +2,11 @@ namespace Tennis
 {
     public class TennisGame3 : ITennisGame
     {
+        private static readonly string[] PointsNames = new[]
+        {
+            "Love", "Fifteen", "Thirty", "Forty"
+        };
+
         private int player2Score;
         private int player1Score;
         private string player1Name;
@@ -15,16 +20,13 @@ namespace Tennis
 
         public string GetScore()
         {
-            if ((player1Score < 4 && player2Score < 4) && (player1Score + player2Score < 6))
+            var isNotEndGame = (player1Score < 4 && player2Score < 4) && (player1Score + player2Score < 6);
+
+            if (isNotEndGame)
             {
-                string[] pointsNames =
-                {
-                    "Love", "Fifteen", "Thirty", "Forty"
-                };
+                var score = PointsNames[player1Score];
 
-                var score = pointsNames[player1Score];
-
-                return (player1Score == player2Score) ? score + "-All" : score + "-" + pointsNames[player2Score];
+                return (player1Score == player2Score) ? score + "-All" : score + "-" + PointsNames[player2Score];
             }
             else
             {
