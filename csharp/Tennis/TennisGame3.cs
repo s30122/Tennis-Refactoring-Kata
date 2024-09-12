@@ -20,9 +20,9 @@ namespace Tennis
 
         public string GetScore()
         {
-            var isNotEndGame = (player1Score < 4 && player2Score < 4) && (player1Score + player2Score < 6);
+            var isEndGame = !((player1Score < 4 && player2Score < 4) && (player1Score + player2Score < 6));
 
-            if (!isNotEndGame)
+            if (isEndGame)
             {
                 if (player1Score == player2Score)
                     return "Deuce";
