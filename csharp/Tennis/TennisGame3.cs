@@ -22,13 +22,7 @@ namespace Tennis
         {
             var isNotEndGame = (player1Score < 4 && player2Score < 4) && (player1Score + player2Score < 6);
 
-            if (isNotEndGame)
-            {
-                var score = PointsNames[player1Score];
-
-                return (player1Score == player2Score) ? score + "-All" : score + "-" + PointsNames[player2Score];
-            }
-            else
+            if (!isNotEndGame)
             {
                 if (player1Score == player2Score)
                     return "Deuce";
@@ -36,6 +30,12 @@ namespace Tennis
                 var winner = player1Score > player2Score ? player1Name : player2Name;
 
                 return ((player1Score - player2Score) * (player1Score - player2Score) == 1) ? "Advantage " + winner : "Win for " + winner;
+            }
+            else
+            {
+                var score = PointsNames[player1Score];
+
+                return (player1Score == player2Score) ? score + "-All" : score + "-" + PointsNames[player2Score];
             }
         }
 
